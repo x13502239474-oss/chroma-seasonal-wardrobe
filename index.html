@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F2ED">
+<meta name="description" content="CHROMA 四时 · 一本私人季节穿搭手册。同一件颜色，在春夏秋冬各有一种穿法。">
+<title>CHROMA 四时 · 私人季节穿搭手册</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="d">
+<a class="skip" href="#main">跳到主要内容</a>
+
+<header class="topbar">
+  <a class="brand" href="#home" data-go="home" aria-label="CHROMA 四时首页">CHROMA<span>THE FOUR SEASONS / 四时</span></a>
+  <div class="topbar-right">
+    <div class="gender" role="group" aria-label="衣橱版型切换">
+      <button type="button" data-gender="women" class="on" aria-pressed="true">女士</button>
+      <button type="button" data-gender="men" aria-pressed="false">男士</button>
+    </div>
+    <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="展开导航">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="seasonbar" id="globalSeasons" role="group" aria-label="四季切换"></div>
+
+<nav class="nav" id="nav" aria-label="主导航">
+  <a href="#home" data-go="home" class="on">首页</a>
+  <a href="#studio" data-go="studio">配色工作台</a>
+  <a href="#result" data-go="result">穿搭推荐</a>
+  <a href="#seasons" data-go="seasons">四季衣橱</a>
+  <a href="#saved" data-go="saved">我的收藏 <em id="saveCount">0</em></a>
+  <a href="#learn" data-go="learn">颜色知识</a>
+</nav>
+
+<main id="main">
+
+  <section class="view on" data-view="home" aria-labelledby="h-home">
+    <div class="wrap">
+      <p class="kicker">THE FOUR SEASONS / 一本属于你的季节穿搭手册</p>
+      <h1 id="h-home" class="display">同一个颜色，<br>四季各有穿法。</h1>
+      <p class="lede">颜色从来不在真空里存在，它总被某一季的光、某一个温度、某一块面料决定。选一件已有的衣服，我们告诉你这个季节该怎么穿——几层、什么材质、配什么颜色。</p>
+      <a class="btn primary" href="#studio" data-go="studio">从这个颜色开始 <span aria-hidden="true">→</span></a>
+
+      <div class="home-look">
+        <div class="panel look-panel" id="homeLook"></div>
+        <div class="look-copy">
+          <p class="kicker">TODAY / 当季衣橱</p>
+          <h2>今天穿几层，<br>比穿什么颜色更要先想。</h2>
+          <p>每一套提案都给出适穿温度、推荐材质与穿衣层次，再落到六件具体单品。切换顶部的季节，色域、面料、层数与品类会一起换季；切换右上角的女士／男士，版型与单品同步改变。</p>
+          <a class="btn ghost" href="#result" data-go="result">看这一季的完整提案 <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="home-grid">
+        <div class="panel wheel-panel">
+          <p class="kicker">SOFT WHEEL / 柔和色环</p>
+          <div id="homeWheel" class="home-wheel" aria-label="按季节筛过的柔和色环"></div>
+          <p class="micro" id="homeWheelNote">点选任意色，直接进入工作台</p>
+        </div>
+        <div class="panel">
+          <p class="kicker">TODAY'S PALETTE / 今日配色</p>
+          <div id="homeFormula" class="formula"></div>
+          <p class="micro">按当季明度与冷暖生成的配色公式，可直接载入工作台。</p>
+          <button type="button" class="btn ghost" id="loadFormula">载入这个公式 <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+
+      <p class="kicker">SEASONS / 四季明度与色温</p>
+      <div id="homeSeasons" class="season-axis"></div>
+
+      <p class="kicker" style="margin-top:2.5rem">ENTER / 翻一翻这本手册</p>
+      <div class="entry-grid">
+        <a href="#studio" data-go="studio"><b>选一个颜色</b><span>自然物色卡 · 柔和色环 · 图片取色</span><em>01</em></a>
+        <a href="#result" data-go="result"><b>当季穿搭提案</b><span>层次 · 材质 · 温度 · 六件单品</span><em>02</em></a>
+        <a href="#seasons" data-go="seasons"><b>四季衣橱</b><span>春夏秋冬各自的穿衣方案</span><em>03</em></a>
+        <a href="#learn" data-go="learn"><b>颜色知识</b><span>用生活语言讲清色彩理论</span><em>04</em></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" data-view="studio" aria-labelledby="h-studio">
+    <div class="wrap">
+      <p class="kicker">WORKSPACE / 季节配色工作台</p>
+      <h1 id="h-studio" class="display">这个颜色，<br>在这个季节怎么穿。</h1>
+      <p class="lede">参数照旧在后台精确计算，界面只说你能感知的事：清透还是沉稳，轻盈还是温暖。</p>
+
+      <div class="studio-grid">
+        <div class="panel">
+          <p class="kicker">01 / 选一个颜色</p>
+          <div class="hex-row">
+            <div class="hex-swatch" id="hexSwatch" aria-hidden="true"></div>
+            <div class="hex-field">
+              <label for="hexInput">HEX 色值</label>
+              <input id="hexInput" type="text" value="#C9D2D8" maxlength="7" spellcheck="false" autocomplete="off" aria-describedby="hexHint">
+              <p class="hint" id="hexHint">也可以直接点下面的自然物色卡</p>
+              <p class="err" id="hexErr" role="alert" hidden>色值格式不正确，请输入 6 位十六进制颜色。</p>
+            </div>
+          </div>
+          <div class="dataline"><span>RGB</span><b id="rgbOut">201, 210, 216</b><span>HSL</span><b id="hslOut">204° / 16% / 82%</b></div>
+          <div class="dataline"><span>色名</span><b id="colorName">初雪灰</b><span>属性</span><b id="colorAttr">冷 · 高明度 · 低饱和</b></div>
+
+          <div id="wheel" class="wheel" aria-label="柔和色环，可点选取色"></div>
+          <p class="micro">柔和色环按季节筛过低饱和色，点选即可开始。</p>
+
+          <div class="slider-group">
+            <label for="hueRange">色相 HUE <output id="hueVal">204°</output></label>
+            <input type="range" id="hueRange" min="0" max="359" value="204" aria-label="色相">
+            <label for="satRange">鲜艳程度 SATURATION <output id="satVal">16%</output></label>
+            <input type="range" id="satRange" min="0" max="100" value="16" aria-label="饱和度">
+            <label for="lightRange">明亮程度 LIGHTNESS <output id="lightVal">82%</output></label>
+            <input type="range" id="lightRange" min="0" max="100" value="82" aria-label="明度">
+          </div>
+
+          <p class="kicker">NATURE LIBRARY / 自然物色卡</p>
+          <div id="swatches" class="swatches"></div>
+
+          <label class="upload" for="imagePicker">
+            <span class="upload-ic" aria-hidden="true">＋</span>
+            <span><b>从衣服照片取色</b><em>图片只在本机浏览器处理，不会上传</em></span>
+            <input type="file" id="imagePicker" accept="image/*">
+          </label>
+          <p class="micro" id="pickerMsg">拍一张衣橱里的衣服，自动提取主色。</p>
+        </div>
+
+        <div class="panel">
+          <p class="kicker">02 / 搭配逻辑</p>
+          <div id="relationBtns" class="relation-grid"></div>
+          <p class="micro" id="relationNote"></p>
+
+          <p class="kicker">03 / 季节</p>
+          <div id="seasonBtns" class="chip-row"></div>
+
+          <p class="kicker">04 / 穿搭风格</p>
+          <select id="styleSelect" aria-label="选择穿搭风格"></select>
+
+          <p class="kicker">OUTPUT / 这一季的配色</p>
+          <div id="outputColors" class="output-colors"></div>
+          <div id="ratioBar" class="ratio-bar"></div>
+          <div class="ratio-scale"><span>0</span><span>25</span><span>50</span><span>75</span><span>100%</span></div>
+          <p class="readout" id="readout"></p>
+
+          <button type="button" class="btn primary block" id="generateBtn" data-go="result">看看这套怎么穿 <span aria-hidden="true">→</span></button>
+          <p class="micro">切换季节、性别或风格后，整套穿搭会重新生成。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" data-view="result" aria-labelledby="h-result">
+    <div class="wrap">
+      <p class="kicker">SEASONAL PROPOSAL / 当季私人穿搭提案</p>
+      <h1 id="h-result" class="display">一套能直接穿出门的搭配。</h1>
+      <div id="resultSwitch" class="result-switch"></div>
+      <div id="resultWrap" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="view" data-view="seasons" aria-labelledby="h-seasons">
+    <div class="wrap">
+      <p class="kicker">THE FOUR SEASONS / 四季不是换个背景</p>
+      <h1 id="h-seasons" class="display">四时衣橱。</h1>
+      <p class="lede">换季时改变的不只是颜色：光线、色温、面料、层数、温度区间与服装品类都会一起变。春清新、夏通透、秋温暖、冬冷冽，共用的是同一套版式与语气。</p>
+      <div id="seasonsWrap"></div>
+    </div>
+  </section>
+
+  <section class="view" data-view="saved" aria-labelledby="h-saved">
+    <div class="wrap">
+      <p class="kicker">MY WARDROBE / 我的衣橱档案</p>
+      <h1 id="h-saved" class="display">收藏与历史</h1>
+      <p class="lede">喜欢的配色和搭配留在这台设备上，按季节翻看，随时回到工作台继续调整。</p>
+      <div class="filter-row" id="savedFilter"></div>
+      <div id="savedWrap" aria-live="polite"></div>
+      <p class="kicker" style="margin-top:2.5rem">RECENT / 最近看过</p>
+      <div id="historyWrap"></div>
+    </div>
+  </section>
+
+  <section class="view" data-view="learn" aria-labelledby="h-learn">
+    <div class="wrap">
+      <p class="kicker">COLOUR, IN PLAIN WORDS / 颜色知识</p>
+      <h1 id="h-learn" class="display">不讲公式，也讲得明白。</h1>
+      <p class="lede">色彩理论是依据，不是规矩。同样的颜色，在羊毛、亚麻、日光和室内光下会不一样，所以每一套提案都留了让你自己微调的余地。</p>
+      <div class="panel learn-demo">
+        <p class="kicker">TRY IT / 拖动明亮程度，看同一色相如何变化</p>
+        <input type="range" id="learnRange" min="10" max="95" value="50" aria-label="演示明度">
+        <div id="learnDemo" class="learn-swatches"></div>
+        <p class="micro">明度差带来层次，色相差带来对比，鲜艳程度决定谁当主角。</p>
+      </div>
+      <div id="learnGrid" class="learn-grid"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div><b>CHROMA 四时</b><p>一本私人季节穿搭手册 · 四季衣橱版</p></div>
+    <p class="micro">本站为设计实现演示，服装视觉为矢量示意；所有配色与参数在你的浏览器本地计算。</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
